@@ -85,6 +85,7 @@ cnn = vgg19(weights=VGG19_Weights.DEFAULT).features.eval()
 cnn_normalization_mean = torch.tensor([0.485, 0.456, 0.406])
 cnn_normalization_std = torch.tensor([0.229, 0.224, 0.225])
 
+
 # create a module to normalize input image, so we can easily put it in a
 # ``nn.Sequential``
 class Normalization(nn.Module):
@@ -184,7 +185,7 @@ def run_style_transfer(
     content_img,
     style_img,
     input_img,
-    num_steps=300,
+    num_steps=400,
     style_weight=1000000,
     content_weight=1,
     result_path="result.jpg",
@@ -250,12 +251,12 @@ def run_style_transfer(
 
     return result_path
 
-
 API_TOKEN = os.environ["API_TOKEN"]
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
 
 logging.basicConfig(level=logging.INFO)
+
 
 # FSM for states
 class YourState(StatesGroup):
@@ -275,6 +276,16 @@ async def start_command(message: types.Message):
     markup.add(item)
 
     await message.answer("Hello! I'm transfer style bot. Please, press the button to continue:", reply_markup=markup)
+
+
+# strict handler for all states
+@dp.message_handler(commands=['transfer_style'], state='*')
+async def transfer_style_main(message: types.Message):
+    await message.answer("Send photo of 'content' (send as photo, documents are not supported now)")
+    await YourState.waiting_for_first_photo.set()
+
+# Register the command handler
+dp.register_message_handler(transfer_style_main, commands=['transfer_style'])
 
 
 # main handler
