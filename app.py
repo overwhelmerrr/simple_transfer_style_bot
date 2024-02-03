@@ -251,6 +251,7 @@ def run_style_transfer(
 
     return result_path
 
+
 API_TOKEN = os.environ["API_TOKEN"]
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
