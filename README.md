@@ -1,4 +1,4 @@
-# simple_transfer_style_bot
+# Simple transfer style bot
 Simple telegram bot to transfer style from one picture to another
 # Installation
 Install docker from official site
@@ -22,3 +22,6 @@ Start the bot by pressing the 'start' button. Than you can press Transfer style 
 
 Also bot command /transfer_style has strict rules to end any state. For example If you've sent the wrong content image, you could reset with /transfer_style
 <img width="1375" alt="screen_3" src="https://github.com/overwhelmerrr/simple_transfer_style_bot/assets/93338693/8e315e84-a9ac-4090-b1e9-3552dd288180">
+
+# References 
+https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
