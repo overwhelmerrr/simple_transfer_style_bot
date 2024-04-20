@@ -25,3 +25,6 @@ Also bot command /transfer_style has strict rules to end any state. For example 
 
 # References 
 https://pytorch.org/tutorials/advanced/neural_style_tutorial.html
+
+# Contacts 
+@zulose
